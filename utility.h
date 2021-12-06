@@ -29,6 +29,26 @@ namespace Utility
 
         return result;
     }
+
+    // From https://stackoverflow.com/a/55838758
+    // Ended up not using it but still seems pretty useful;
+    template <class T>
+    class VectorProxy
+    {
+        std::vector<T> &v1;
+        std::vector<T> &v2;
+    public:
+        VectorProxy(std::vector<T> &ref1, std::vector<T> &ref2) :
+            v1{ ref1 }, v2{ ref2 } {}
+        
+        const T& operator[](const size_t i) const {
+            return (i < v1.size() ? v1[i] : v2[i - v1.size()]);
+        }
+
+        const size_t size() const {
+            return v1.size() + v2.size();
+        }
+    };
 }
 
 #endif
