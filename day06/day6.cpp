@@ -60,7 +60,7 @@ void doProblem(int partNumber, int maxDays, const std::string &toRead)
 
 int main()
 {
-    doProblem(1, 80, "input6test");
+    doProblem(1, 80, "input6");
     // apparently part 2 is just the same but with bigger numbers
     doProblem(2, 256, "input6");
 
