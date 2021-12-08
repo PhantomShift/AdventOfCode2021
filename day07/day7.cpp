@@ -3,7 +3,10 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <numeric>
+#include <limits>
+
+#include <map>
+#include <assert.h>
 
 void part1()
 {
@@ -45,10 +48,19 @@ void part1()
 
 int sumTo(int x)
 {
-    int sum{};
-    for (int i{}; i <= x; i++)
-        sum += i;
+    static std::map<int, int> cache{{0,0}};
+    
+    if (x == 0) return 0;
+    if (cache[x]) return cache[x];
 
+    int lastHighest{ static_cast<int>(cache.size()) - 2 };
+    int sum{ cache[lastHighest] };
+    for (int i{ lastHighest + 1 }; i <= x; i++)
+    {
+        sum += i;
+        cache[i] = sum;
+    }
+    
     return sum;
 }
 
@@ -94,7 +106,10 @@ void part2()
 int main()
 {
     part1();
+    Utility::Timer t;
     part2();
+
+    std::cout << "Operation took " << (t.elapsed()) << " seconds\n";
 
     return 0;
 }
