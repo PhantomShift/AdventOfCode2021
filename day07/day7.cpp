@@ -4,9 +4,7 @@
 #include <vector>
 #include <string>
 #include <limits>
-
 #include <map>
-#include <assert.h>
 
 void part1()
 {
@@ -106,10 +104,7 @@ void part2()
 int main()
 {
     part1();
-    Utility::Timer t;
     part2();
-
-    std::cout << "Operation took " << (t.elapsed()) << " seconds\n";
 
     return 0;
 }
