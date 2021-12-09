@@ -63,6 +63,7 @@ void part1()
         }
         area.push_back(row);
     }
+    inputs.close();
 
     // Figure out which coordinates are the lowest of their neighbors
     // tuple contains pairs <y, x>
@@ -182,6 +183,7 @@ void part2()
         }
         area.push_back(row);
     }
+    inputs.close();
 
     // Figure out which coordinates are the lowest of their neighbors
     // tuple contains pairs <y, x>
