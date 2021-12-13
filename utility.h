@@ -77,6 +77,25 @@ namespace Utility
             return std::chrono::duration_cast<second_type>(clock_type::now() - m_beg).count();
         }
     };
+
+
+    template <typename T>
+    size_t vectorFind(std::vector<T> &vector, T &toFind)
+    {
+        for (size_t index = 0; index < vector.size(); index++)
+            if (vector[index] == toFind) return index;
+
+        return vector.size();
+    }
+
+    template <typename T>
+    size_t vectorRfind(std::vector<T> &vector, T &toFind)
+    {
+        for (size_t index = vector.size() - 1; index >= 0; index--)
+            if (vector[index] == toFind) return index;
+        
+        return vector.size();
+    }
 }
 
 #endif
