@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <limits>
 
 namespace Utility
 {
@@ -80,18 +81,19 @@ namespace Utility
 
 
     template <typename T>
-    size_t vectorFind(std::vector<T> &vector, T &toFind)
+    size_t vectorFind(std::vector<T> &vector, T &toFind, size_t start=0U)
     {
-        for (size_t index = 0; index < vector.size(); index++)
+        for (size_t index = start; index < vector.size(); index++)
             if (vector[index] == toFind) return index;
 
         return vector.size();
     }
 
     template <typename T>
-    size_t vectorRfind(std::vector<T> &vector, T &toFind)
+    size_t vectorRfind(std::vector<T> &vector, T &toFind, size_t start=std::numeric_limits<size_t>::max())
     {
-        for (size_t index = vector.size() - 1; index >= 0; index--)
+        start = (vector.size() > start ? start  : vector.size() - 1);
+        for (size_t index = start; index >= 0; index--)
             if (vector[index] == toFind) return index;
         
         return vector.size();
