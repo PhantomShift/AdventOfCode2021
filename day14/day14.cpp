@@ -53,17 +53,13 @@ void doProblem(int iterations = 10)
     // Determine totals of individual characters
     std::map<char, long long> charTotals;
     for (auto [pair, total] : totals)
-    {
-        charTotals[pair[0]] += total;
         charTotals[pair[1]] += total;
-    }
 
     // Get greatest/lowest
     long long greatest = 0;
     long long lowest = std::numeric_limits<long long>::max();
     for (auto [character, total] : charTotals)
     {
-        total = (total + 1) / 2; // Halve to take shared characters into consideration
         if (total > greatest) greatest = total;
         if (total < lowest) lowest = total;
     }
