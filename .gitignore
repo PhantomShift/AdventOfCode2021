@@ -1,2 +1,5 @@
 .vscode
 */main
+**/input
+**/input[0-9]
+**/input[0-9][0-9]
